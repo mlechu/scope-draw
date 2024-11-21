@@ -11,7 +11,6 @@ flash: $(ELF)
 	avrdude -c arduino -p atmega328p -P $(PORT) -U "flash:w:$<:e"
 
 $(ELF): sd.c
-	avr-gcc -Wall -Wextra -mmcu=atmega328p $< -o $@
-# -DF_CPU=16000000UL ?
+	avr-gcc -Wall -Wextra -Os -mmcu=atmega328p $< -o $@
 
 .phony: all clean flash
